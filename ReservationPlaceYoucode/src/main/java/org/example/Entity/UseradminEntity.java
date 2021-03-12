@@ -3,43 +3,58 @@ package org.example.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+
 @Entity
-@Table(name = "useradmin", schema = "reservation", catalog = "")
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "useradmin")
 public class UseradminEntity {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(unique = true, nullable = false)
     private String email;
-    private String passwordUser;
-    private Integer phoneNumber;
-    private Integer idRole;
-    private Collection<AdminEntity> adminsByIdUser;
-    private Collection<StudentEntity> studentsByIdUser;
-    private RoleEntity roleByIdRole;
+    @Column(nullable = false)
+    private String password;
+    @Column(nullable = false)
+    private int  phone;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    @OneToOne
+    private RoleEntity role;
+
+    public UseradminEntity() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public UseradminEntity(String firstName, String lastName, String email, String password, int phone, RoleEntity role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
     }
 
-    @Id
-    @Column(name = "id_user")
-    public int getIdUser() {
+    public UseradminEntity(int id, String firstName, String lastName, String email, String password, int phone, RoleEntity role) {
+        this.idUser = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
+    }
+
+    public int getId() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(int id) {
+        this.idUser = id;
     }
 
-    @Basic
-    @Column(name = "First_name")
     public String getFirstName() {
         return firstName;
     }
@@ -48,8 +63,6 @@ public class UseradminEntity {
         this.firstName = firstName;
     }
 
-    @Basic
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -58,8 +71,6 @@ public class UseradminEntity {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -68,91 +79,40 @@ public class UseradminEntity {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "passwordUser")
-    public String getPasswordUser() {
-        return passwordUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Basic
-    @Column(name = "phone_Number")
-    public Integer getPhoneNumber() {
-        return phoneNumber;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "id_role")
-    public Integer getIdRole() {
-        return idRole;
+    public RoleEntity getRole() {
+        return role;
     }
 
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
+    public void setRole(RoleEntity role) {
+        this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        UseradminEntity that = (UseradminEntity) o;
-
-        if (idUser != that.idUser) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (passwordUser != null ? !passwordUser.equals(that.passwordUser) : that.passwordUser != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
-        if (idRole != null ? !idRole.equals(that.idRole) : that.idRole != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idUser;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (passwordUser != null ? passwordUser.hashCode() : 0);
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (idRole != null ? idRole.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "useradminByIdUser")
-    public Collection<AdminEntity> getAdminsByIdUser() {
-        return adminsByIdUser;
-    }
-
-    public void setAdminsByIdUser(Collection<AdminEntity> adminsByIdUser) {
-        this.adminsByIdUser = adminsByIdUser;
-    }
-
-    @OneToMany(mappedBy = "useradminByIdUser")
-    public Collection<StudentEntity> getStudentsByIdUser() {
-        return studentsByIdUser;
-    }
-
-    public void setStudentsByIdUser(Collection<StudentEntity> studentsByIdUser) {
-        this.studentsByIdUser = studentsByIdUser;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_role", referencedColumnName = "id_r")
-    public RoleEntity getRoleByIdRole() {
-        return roleByIdRole;
-    }
-
-    public void setRoleByIdRole(RoleEntity roleByIdRole) {
-        this.roleByIdRole = roleByIdRole;
+    public void showUser() {
+        System.out.println("Users{" +
+                "id=" + idUser +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone=" + phone +
+                ", role=" + role.getRoleName() +
+                '}');
     }
 }

@@ -1108,211 +1108,94 @@
     <user id="354" parent="1" name="zahid">
       <Host>localhost</Host>
     </user>
-    <table id="355" parent="20" name="admin">
+    <table id="355" parent="20" name="role">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="356" parent="20" name="reservation">
+    <table id="356" parent="20" name="useradmin">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="357" parent="20" name="role">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="358" parent="20" name="student">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="359" parent="20" name="typereservation">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="360" parent="20" name="useradmin">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="361" parent="355" name="id_admin">
+    <column id="357" parent="355" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="362" parent="355" name="id_user">
+    <column id="358" parent="355" name="roleName">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="363" parent="355" name="id_user">
-      <ColNames>id_user</ColNames>
+    <index id="359" parent="355" name="UK_bgeqjb5opmijvwc14fbtaj4xx">
+      <ColNames>roleName</ColNames>
+      <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="364" parent="355" name="PRIMARY">
+    <key id="360" parent="355" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_admin</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="365" parent="355" name="admin_ibfk_1">
-      <ColNames>id_user</ColNames>
-      <RefTableName>useradmin</RefTableName>
-      <RefColNames>id_user</RefColNames>
-    </foreign-key>
-    <column id="366" parent="356" name="id_res">
+    <key id="361" parent="355" name="UK_bgeqjb5opmijvwc14fbtaj4xx">
+      <ColNames>roleName</ColNames>
+      <UnderlyingIndexName>UK_bgeqjb5opmijvwc14fbtaj4xx</UnderlyingIndexName>
+    </key>
+    <column id="362" parent="356" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="367" parent="356" name="dateResv">
+    <column id="363" parent="356" name="email">
       <Position>2</Position>
-      <DataType>date|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="368" parent="356" name="isAccept">
+    <column id="364" parent="356" name="firstName">
       <Position>3</Position>
-      <DataType>tinyint(1)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="369" parent="356" name="id_st">
+    <column id="365" parent="356" name="lastName">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="356" name="idtype">
+    <column id="366" parent="356" name="password">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <index id="371" parent="356" name="id_st">
-      <ColNames>id_st</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="372" parent="356" name="idtype">
-      <ColNames>idtype</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="373" parent="356" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_res</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="374" parent="356" name="reservation_ibfk_1">
-      <ColNames>id_st</ColNames>
-      <RefTableName>student</RefTableName>
-      <RefColNames>id_std</RefColNames>
-    </foreign-key>
-    <foreign-key id="375" parent="356" name="reservation_ibfk_2">
-      <ColNames>idtype</ColNames>
-      <RefTableName>typereservation</RefTableName>
-      <RefColNames>id_type</RefColNames>
-    </foreign-key>
-    <column id="376" parent="357" name="id_r">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="377" parent="357" name="Rolename">
-      <Position>2</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <key id="378" parent="357" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_r</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="379" parent="358" name="id_std">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="380" parent="358" name="id_user">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="381" parent="358" name="nbrMaxReserve">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="382" parent="358" name="is_accept">
-      <Position>4</Position>
-      <DataType>tinyint(1)|0s</DataType>
-    </column>
-    <index id="383" parent="358" name="id_user">
-      <ColNames>id_user</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="384" parent="358" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_std</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="385" parent="358" name="student_ibfk_1">
-      <ColNames>id_user</ColNames>
-      <RefTableName>useradmin</RefTableName>
-      <RefColNames>id_user</RefColNames>
-    </foreign-key>
-    <column id="386" parent="359" name="id_type">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="387" parent="359" name="nbrPlace">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="388" parent="359" name="typeRes">
-      <Position>3</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <key id="389" parent="359" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_type</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="390" parent="360" name="id_user">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="391" parent="360" name="First_name">
-      <Position>2</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <column id="392" parent="360" name="last_name">
-      <Position>3</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <column id="393" parent="360" name="email">
-      <Position>4</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <column id="394" parent="360" name="passwordUser">
-      <Position>5</Position>
-      <DataType>varchar(250)|0s</DataType>
-    </column>
-    <column id="395" parent="360" name="phone_Number">
+    <column id="367" parent="356" name="phone">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="396" parent="360" name="id_role">
+    <column id="368" parent="356" name="role_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="397" parent="360" name="email">
+    <index id="369" parent="356" name="UK_lv0s63n8qtkqm4bgm4w2qq7ri">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="398" parent="360" name="id_role">
-      <ColNames>id_role</ColNames>
+    <index id="370" parent="356" name="FK96j9qvb43ii754nwu67tykrk8">
+      <ColNames>role_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="399" parent="360" name="PRIMARY">
+    <key id="371" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_user</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="400" parent="360" name="email">
+    <key id="372" parent="356" name="UK_lv0s63n8qtkqm4bgm4w2qq7ri">
       <ColNames>email</ColNames>
-      <UnderlyingIndexName>email</UnderlyingIndexName>
+      <UnderlyingIndexName>UK_lv0s63n8qtkqm4bgm4w2qq7ri</UnderlyingIndexName>
     </key>
-    <foreign-key id="401" parent="360" name="useradmin_ibfk_1">
-      <ColNames>id_role</ColNames>
+    <foreign-key id="373" parent="356" name="FK96j9qvb43ii754nwu67tykrk8">
+      <ColNames>role_id</ColNames>
       <RefTableName>role</RefTableName>
-      <RefColNames>id_r</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
   </database-model>
 </dataSource>

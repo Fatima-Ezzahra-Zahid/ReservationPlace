@@ -4,120 +4,85 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "reservation", schema = "reservation", catalog = "")
+@Table(name = "reservation")
 public class ReservationEntity {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRes;
-    private Date dateResv;
-    private Byte isAccept;
-    private Integer idSt;
-    private Integer idtype;
-    private StudentEntity studentByIdSt;
-    private TypereservationEntity typereservationByIdtype;
+    @OneToOne
+    private UseradminEntity user;
+    @Column(nullable = false)
+    private String dateRes;
+    private boolean confirmation;
+    @OneToOne
+    private TypereservationEntity typeRes;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    public ReservationEntity() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public ReservationEntity(int id, UseradminEntity user, String dateRes, boolean confirmation, TypereservationEntity typeRes) {
+        this.idRes = id;
+        this.user = user;
+        this.dateRes = dateRes;
+        this.confirmation = confirmation;
+        this.typeRes = typeRes;
     }
 
-    @Id
-    @Column(name = "id_res")
-    public int getIdRes() {
+    public ReservationEntity(UseradminEntity user, String dateRes, boolean confirmation, TypereservationEntity typeRes) {
+        this.user = user;
+        this.dateRes = dateRes;
+        this.confirmation = confirmation;
+        this.typeRes = typeRes;
+    }
+
+    public int getId() {
         return idRes;
     }
 
-    public void setIdRes(int idRes) {
-        this.idRes = idRes;
+    public void setId(int id) {
+        this.idRes = id;
     }
 
-    @Basic
-    @Column(name = "dateResv")
-    public Date getDateResv() {
-        return dateResv;
+    public UseradminEntity getUser() {
+        return user;
     }
 
-    public void setDateResv(Date dateResv) {
-        this.dateResv = dateResv;
+    public void setUser(UseradminEntity user) {
+        this.user = user;
     }
 
-    @Basic
-    @Column(name = "isAccept")
-    public Byte getIsAccept() {
-        return isAccept;
+    public String getDateRes() {
+        return dateRes;
     }
 
-    public void setIsAccept(Byte isAccept) {
-        this.isAccept = isAccept;
+    public void setDateRes(String dateRes) {
+        this.dateRes = dateRes;
     }
 
-    @Basic
-    @Column(name = "id_st")
-    public Integer getIdSt() {
-        return idSt;
+    public boolean isConfirmation() {
+        return confirmation;
     }
 
-    public void setIdSt(Integer idSt) {
-        this.idSt = idSt;
+    public void setConfirmation(boolean confirmation) {
+        this.confirmation = confirmation;
     }
 
-    @Basic
-    @Column(name = "idtype")
-    public Integer getIdtype() {
-        return idtype;
+    public TypereservationEntity getTypeRes() {
+        return typeRes;
     }
 
-    public void setIdtype(Integer idtype) {
-        this.idtype = idtype;
+    public void setTypeRes(TypereservationEntity typeRes) {
+        this.typeRes = typeRes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        ReservationEntity that = (ReservationEntity) o;
-
-        if (idRes != that.idRes) return false;
-        if (dateResv != null ? !dateResv.equals(that.dateResv) : that.dateResv != null) return false;
-        if (isAccept != null ? !isAccept.equals(that.isAccept) : that.isAccept != null) return false;
-        if (idSt != null ? !idSt.equals(that.idSt) : that.idSt != null) return false;
-        if (idtype != null ? !idtype.equals(that.idtype) : that.idtype != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idRes;
-        result = 31 * result + (dateResv != null ? dateResv.hashCode() : 0);
-        result = 31 * result + (isAccept != null ? isAccept.hashCode() : 0);
-        result = 31 * result + (idSt != null ? idSt.hashCode() : 0);
-        result = 31 * result + (idtype != null ? idtype.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_st", referencedColumnName = "id_std")
-    public StudentEntity getStudentByIdSt() {
-        return studentByIdSt;
-    }
-
-    public void setStudentByIdSt(StudentEntity studentByIdSt) {
-        this.studentByIdSt = studentByIdSt;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "idtype", referencedColumnName = "id_type")
-    public TypereservationEntity getTypereservationByIdtype() {
-        return typereservationByIdtype;
-    }
-
-    public void setTypereservationByIdtype(TypereservationEntity typereservationByIdtype) {
-        this.typereservationByIdtype = typereservationByIdtype;
+    public void showRes() {
+        System.out.println("Reservation{" +
+                "id=" + idRes +
+                ", user=" + user +
+                ", dateRes='" + dateRes + '\'' +
+                ", confirmation=" + confirmation +
+                ", typeRes=" + typeRes +
+                '}');
     }
 }

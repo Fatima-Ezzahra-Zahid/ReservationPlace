@@ -4,69 +4,46 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "role", schema = "reservation", catalog = "")
+@Table(name = "role")
 public class RoleEntity {
-    private Long id;
-    private int idR;
-    private String rolename;
-    private Collection<UseradminEntity> useradminsByIdR;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idRole;
+    @Column(nullable = false, unique = true)
+    private String roleName;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    public RoleEntity() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public RoleEntity(int id, String roleName) {
+        this.idRole = id;
+        this.roleName = roleName;
     }
 
-    @Id
-    @Column(name = "id_r")
-    public int getIdR() {
-        return idR;
+    public RoleEntity(String roleName) {
+        this.roleName = roleName;
     }
 
-    public void setIdR(int idR) {
-        this.idR = idR;
+    public int getId() {
+        return idRole;
     }
 
-    @Basic
-    @Column(name = "Rolename")
-    public String getRolename() {
-        return rolename;
+    public void setId(int id) {
+        this.idRole = id;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public String getRoleName() {
+        return roleName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RoleEntity that = (RoleEntity) o;
-
-        if (idR != that.idR) return false;
-        if (rolename != null ? !rolename.equals(that.rolename) : that.rolename != null) return false;
-
-        return true;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    @Override
-    public int hashCode() {
-        int result = idR;
-        result = 31 * result + (rolename != null ? rolename.hashCode() : 0);
-        return result;
-    }
 
-    @OneToMany(mappedBy = "roleByIdRole")
-    public Collection<UseradminEntity> getUseradminsByIdR() {
-        return useradminsByIdR;
-    }
-
-    public void setUseradminsByIdR(Collection<UseradminEntity> useradminsByIdR) {
-        this.useradminsByIdR = useradminsByIdR;
+    public void showRole() {
+        System.out.println("RoleEntity{" +
+                "id=" + idRole +
+                ", roleName='" + roleName + '\'' +
+                '}');
     }
 }

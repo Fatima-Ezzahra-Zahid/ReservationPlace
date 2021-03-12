@@ -4,46 +4,38 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "typereservation", schema = "reservation", catalog = "")
+@Table(name = "typereservation")
 public class TypereservationEntity {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idType;
-    private Integer nbrPlace;
+    @Column(nullable = false)
     private String typeRes;
-    private Collection<ReservationEntity> reservationsByIdType;
+    @Column(nullable = false)
+    private int nomberClass;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    public TypereservationEntity() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public TypereservationEntity(String typeRes, int nomberClass) {
+        this.typeRes = typeRes;
+        this.nomberClass = nomberClass;
     }
 
-    @Id
-    @Column(name = "id_type")
-    public int getIdType() {
+    public TypereservationEntity(int id, String typeRes, int nomberClass) {
+        this.idType = id;
+        this.typeRes = typeRes;
+        this.nomberClass = nomberClass;
+    }
+
+    public int getId() {
         return idType;
     }
 
-    public void setIdType(int idType) {
-        this.idType = idType;
+    public void setId(int id) {
+        this.idType = id;
     }
 
-    @Basic
-    @Column(name = "nbrPlace")
-    public Integer getNbrPlace() {
-        return nbrPlace;
-    }
-
-    public void setNbrPlace(Integer nbrPlace) {
-        this.nbrPlace = nbrPlace;
-    }
-
-    @Basic
-    @Column(name = "typeRes")
     public String getTypeRes() {
         return typeRes;
     }
@@ -52,34 +44,20 @@ public class TypereservationEntity {
         this.typeRes = typeRes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TypereservationEntity that = (TypereservationEntity) o;
-
-        if (idType != that.idType) return false;
-        if (nbrPlace != null ? !nbrPlace.equals(that.nbrPlace) : that.nbrPlace != null) return false;
-        if (typeRes != null ? !typeRes.equals(that.typeRes) : that.typeRes != null) return false;
-
-        return true;
+    public int getNomberClass() {
+        return nomberClass;
     }
 
-    @Override
-    public int hashCode() {
-        int result = idType;
-        result = 31 * result + (nbrPlace != null ? nbrPlace.hashCode() : 0);
-        result = 31 * result + (typeRes != null ? typeRes.hashCode() : 0);
-        return result;
+    public void setNomberClass(int nomberClass) {
+        this.nomberClass = nomberClass;
     }
 
-    @OneToMany(mappedBy = "typereservationByIdtype")
-    public Collection<ReservationEntity> getReservationsByIdType() {
-        return reservationsByIdType;
-    }
 
-    public void setReservationsByIdType(Collection<ReservationEntity> reservationsByIdType) {
-        this.reservationsByIdType = reservationsByIdType;
+    public void showTypeRes() {
+        System.out.println("TypeRes{" +
+                "id=" + idType +
+                ", typeRes='" + typeRes + '\'' +
+                ", nomberClass=" + nomberClass +
+                '}');
     }
 }
