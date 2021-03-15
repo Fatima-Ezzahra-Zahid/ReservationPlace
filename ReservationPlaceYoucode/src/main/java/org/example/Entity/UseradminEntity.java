@@ -1,13 +1,14 @@
 package org.example.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "useradmin")
-public class UseradminEntity {
+public class UseradminEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;

@@ -1,11 +1,12 @@
 package org.example.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name = "reservation")
-public class ReservationEntity {
+public class ReservationEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRes;

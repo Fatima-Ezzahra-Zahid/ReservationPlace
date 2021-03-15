@@ -1,11 +1,12 @@
 package org.example.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name = "typereservation")
-public class TypereservationEntity {
+public class TypereservationEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idType;

@@ -1,11 +1,12 @@
 package org.example.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name = "role")
-public class RoleEntity {
+public class RoleEntity implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRole;
     @Column(nullable = false, unique = true)
