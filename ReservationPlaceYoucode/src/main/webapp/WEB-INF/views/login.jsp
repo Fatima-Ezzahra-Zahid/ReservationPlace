@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>login</title>
@@ -36,31 +37,31 @@
                             <h3>Sign In</h3>
                             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
                         </div>
-                        <form action="#" method="post">
+                <form:form method="post" modelAttribute="userlogin" action="prosseForm">
                             <div class="form-group first">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username">
+                                <form:input  path="email" type="text" class="form-control" id="username" name="username"/>
 
                             </div>
                             <div class="form-group last mb-4">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <form:input path="password" type="password" class="form-control" id="password" name="password"/>
 
                             </div>
 
                             <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                                    <input type="checkbox" checked="checked"/>
-                                    <div class="control__indicator"></div>
-                                </label>
+                               <span class="caption"><a href="regestre" class="signup-image-link">Create an account</a></span>
+
 
                             </div>
+
+
 
                             <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
 
 
-                        </form>
+                </form:form>
                     </div>
                 </div>
 

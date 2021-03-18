@@ -9,7 +9,7 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/reservation</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <!-- Type de la base de données -->
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>

@@ -29,12 +29,12 @@ public class ReservationEntity implements Serializable {
         this.typeRes = typeRes;
     }
 
-    public ReservationEntity(UseradminEntity user, String dateRes, boolean confirmation, TypereservationEntity typeRes) {
+    public ReservationEntity(UseradminEntity user, String dateRes, TypereservationEntity typeRes) {
         this.user = user;
         this.dateRes = dateRes;
-        this.confirmation = confirmation;
         this.typeRes = typeRes;
     }
+
 
     public int getId() {
         return idRes;

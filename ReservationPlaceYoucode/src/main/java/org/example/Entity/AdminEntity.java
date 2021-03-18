@@ -8,4 +8,6 @@ import java.io.Serializable;
 @Table(name = "admin")
 public class AdminEntity extends  UseradminEntity implements Serializable {
 
+
+
 }

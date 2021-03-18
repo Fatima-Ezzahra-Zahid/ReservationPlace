@@ -3,9 +3,13 @@ package org.example.DAO;
 import org.example.HibernateUtil;
 import org.example.Entity.RoleEntity;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@Component
 public class RoleDaoImpl implements RoleDAO{
     Session session;
     @Override

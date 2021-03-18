@@ -1,5 +1,9 @@
 package org.example.config;
 
+import org.example.DAO.UserDAO;
+import org.example.DAO.UserDaoImpl;
+import org.example.service.UserService;
+import org.example.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +25,16 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
-	
+
+//	@Bean(name = "userService")
+//	public UserService getUsertService() {
+//		return new UserServiceImpl();
+//	}
+//	@Bean(name = "userDao")
+//	public UserDAO getUsertDao() {
+//		return new UserDaoImpl();
+//	}
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

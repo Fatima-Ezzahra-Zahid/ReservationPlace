@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import javax.persistence.Query;
 
-public class Login {
+public class LoginRepostory {
 
         Session session;
     public UseradminEntity getUserByEmailPassword(String email, String password){

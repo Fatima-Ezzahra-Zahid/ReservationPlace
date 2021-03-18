@@ -4,9 +4,13 @@ package org.example.DAO;
 import org.example.HibernateUtil;
 import org.example.Entity.AdminEntity;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@Component
 public class AdminDaoImpl implements AdminDAO{
     Session session;
     @Override
