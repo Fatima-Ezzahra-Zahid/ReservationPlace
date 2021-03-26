@@ -1,22 +1,15 @@
-package org.example;
+package org.example.Test;
 
-import org.example.DAO.AdminDaoImpl;
 import org.example.DAO.*;
-import org.example.DAO.RoleDAO;
 import org.example.DAO.RoleDaoImpl;
 import org.example.Entity.*;
-import org.example.Repostory.LoginRepostory;
+import org.example.Repostory.ReservationRepostory;
 import org.example.service.UserService;
-import org.example.service.UserServiceImpl;
-import org.hibernate.HibernateException;
-import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
+import org.example.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.metamodel.EntityType;
+import java.util.List;
 
 
 public class Main {
@@ -64,8 +57,8 @@ public static void main(final String[] args) throws Exception {
 
         //role
 
-//    RoleDaoImpl roleDAO=new RoleDaoImpl();
-//    roleDAO.addRole(new RoleEntity("admin"));
+    RoleDaoImpl roleDAO=new RoleDaoImpl();
+    roleDAO.addRole(new RoleEntity("nnn"));
 
     //Test Session
 
@@ -112,13 +105,29 @@ public static void main(final String[] args) throws Exception {
 //TestSERvice User
 
 
-    UserDaoImpl userDao=new UserDaoImpl();
-    RoleDaoImpl roleDao=new RoleDaoImpl();
-    RoleEntity roleEntity=roleDao.getRoleById(1);
-    UseradminEntity user=new UseradminEntity("malak","errabib","malkcca@gmail.com","malk123",12344,roleEntity);
-    userService.addUser(user);
+//    UserDaoImpl userDao=new UserDaoImpl();
+//    RoleDaoImpl roleDao=new RoleDaoImpl();
+//    RoleEntity roleEntity=roleDao.getRoleById(1);
+//    UseradminEntity user=new UseradminEntity("malak","errabib","malkcca@gmail.com","malk123",12344,roleEntity);
+//    userService.addUser(user);
 
 //    userDao.addUser(user);
+
+
+//    ReservationDaoImpl reservationDao=new ReservationDaoImpl();
+//    System.out.println(reservationDao.getResById(7));
+
+//    ReservationRepostory reservationRepostory=new ReservationRepostory();
+//
+//    List<ReservationEntity> reservations= reservationRepostory.getAllReservationsById(7);
+//
+//    for (ReservationEntity  res: reservations) {
+//			System.out.println("Année : " +res.getDateRes()+"  "+"Type : "+res.getTypeRes().getTypeRes());
+//
+//		}
+
+
+
 
 }
 }

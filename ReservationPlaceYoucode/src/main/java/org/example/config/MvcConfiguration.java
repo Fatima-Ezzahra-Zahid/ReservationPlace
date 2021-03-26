@@ -26,14 +26,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		return resolver;
 	}
 
-//	@Bean(name = "userService")
-//	public UserService getUsertService() {
-//		return new UserServiceImpl();
-//	}
-//	@Bean(name = "userDao")
-//	public UserDAO getUsertDao() {
-//		return new UserDaoImpl();
-//	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

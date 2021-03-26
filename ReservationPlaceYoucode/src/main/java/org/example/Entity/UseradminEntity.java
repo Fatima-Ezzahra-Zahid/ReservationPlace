@@ -23,8 +23,11 @@ public class UseradminEntity implements Serializable {
     @Column(nullable = false)
     private int  phone;
 
+    @Column(nullable = false)
+    private boolean accepted;
+
     @OneToOne
-    private RoleEntity role;
+   private RoleEntity role;
 
     public UseradminEntity() {
     }
@@ -46,6 +49,15 @@ public class UseradminEntity implements Serializable {
         this.password = password;
         this.phone = phone;
         this.role = role;
+    }
+
+    public UseradminEntity(int id, String firstName, String lastName, String email, String password) {
+        this.idUser = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+
     }
 
     public int getId() {
@@ -115,5 +127,13 @@ public class UseradminEntity implements Serializable {
                 ", phone=" + phone +
                 ", role=" + role.getRoleName() +
                 '}');
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
