@@ -53,12 +53,12 @@ public class Main {
 public static void main(final String[] args) throws Exception {
 
 
-        final Session session = HibernateUtil.getSession();
-
-        //role
-
-    RoleDaoImpl roleDAO=new RoleDaoImpl();
-    roleDAO.addRole(new RoleEntity("nnn"));
+//        final Session session = HibernateUtil.getSession();
+//
+//        //role
+//
+//    RoleDaoImpl roleDAO=new RoleDaoImpl();
+//    roleDAO.addRole(new RoleEntity("nnn"));
 
     //Test Session
 
@@ -117,14 +117,14 @@ public static void main(final String[] args) throws Exception {
 //    ReservationDaoImpl reservationDao=new ReservationDaoImpl();
 //    System.out.println(reservationDao.getResById(7));
 
-//    ReservationRepostory reservationRepostory=new ReservationRepostory();
-//
-//    List<ReservationEntity> reservations= reservationRepostory.getAllReservationsById(7);
-//
-//    for (ReservationEntity  res: reservations) {
-//			System.out.println("Année : " +res.getDateRes()+"  "+"Type : "+res.getTypeRes().getTypeRes());
-//
-//		}
+    ReservationRepostory reservationRepostory=new ReservationRepostory();
+
+    List<ReservationEntity> reservations= reservationRepostory.getAllReservationsById(7);
+
+    for (ReservationEntity  res: reservations) {
+			System.out.println("Année : " +res.getDateRes()+"  "+"Type : "+res.getTypeRes().getTypeRes());
+
+		}
 
 
 

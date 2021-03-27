@@ -85,15 +85,16 @@ private TypeResService typeResService;
 
 
     //Redirect Login
-	@RequestMapping(value = "/loginDirect")
+	@RequestMapping(value = "loginDirect")
 	public String loginDerict(){
-		return "login";
+
+		return "redirect:/";
 	}
 
 
 	//Display Regestre
 
-	@RequestMapping(value="/regestre")
+	@RequestMapping(value="regestre")
 	public String DisplayRegestre(@ModelAttribute("student") StudentEntity studentEntity)
 	{
 		return "inscription";

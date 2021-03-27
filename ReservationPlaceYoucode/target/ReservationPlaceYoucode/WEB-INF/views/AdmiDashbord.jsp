@@ -130,7 +130,7 @@
                             </a>
                             <ul class="show-notification profile-notification">
                                 <li class="waves-effect waves-light">
-                                    <a href="EditPfS">
+                                    <a href="EditPfAdmin">
                                         <i class="ti-user"></i> Editer profile
                                     </a>
                                 </li>
@@ -140,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="waves-effect waves-light">
-                                    <a href="auth-normal-sign-in.html">
+                                    <a href="loginDirect">
                                         <i class="ti-layout-sidebar-left"></i> Logout
                                     </a>
                                 </li>
@@ -167,10 +167,10 @@
                         <div class="main-menu-content">
                             <ul>
                                 <li class="more-details">
-                                    <a href="EditPfS">
+                                    <a href="EditPfAdmin">
                                         <i class="ti-user"></i> Editer profile
                                     </a>
-                                    <i class="ti-layout-sidebar-left"></i>Logout</a>
+                                   <a href="loginDirect"> <i class="ti-layout-sidebar-left"></i>Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -181,7 +181,7 @@
                         <li class="active">
                             <a href="dashbord" class="waves-effect waves-dark">
                                 <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                <span class="pcoded-mtext" data-i18n="nav.dash.main">Home</span>
                                 <span class="pcoded-mcaret"></span>
                             </a>
                         </li>
@@ -193,46 +193,30 @@
 
                     <ul class="pcoded-item pcoded-left-item">
                         <li class="active">
-                            <a href="Res" class="waves-effect waves-dark">
+                            <a href="ShowRes" class="waves-effect waves-dark">
                                 <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                <span class="pcoded-mtext" data-i18n="nav.form-components.main">Add
-                                            Reservation</span>
+                                <span class="pcoded-mtext" data-i18n="nav.form-components.main">
+                                            Reservations</span>
                                 <span class="pcoded-mcaret"></span>
                             </a>
                         </li>
 
                     </ul>
+
 
 
                     <ul class="pcoded-item pcoded-left-item">
-
-                        <li class="pcoded-hasmenu">
-                            <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Settings</span>
+                        <li class="active">
+                            <a href="TypeRes" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                <span class="pcoded-mtext" data-i18n="nav.form-components.main">
+                                           Type of reservation</span>
                                 <span class="pcoded-mcaret"></span>
                             </a>
-                            <ul class="pcoded-submenu">
-                                <li class=" ">
-                                    <a href="loginDirect" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                        <span class="pcoded-mtext"
-                                              data-i18n="nav.basic-components.alert">Login</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class=" ">
-                                    <a href="regestre" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                        <span class="pcoded-mtext"
-                                              data-i18n="nav.basic-components.breadcrumbs">Register</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                     </ul>
+
 
                 </nav>
 
@@ -243,7 +227,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <div class="page-header-title">
-                                    <h5 class="m-b-10">Dashboard</h5>
+                                    <h5 class="m-b-10">Home</h5>
                                     <p class="m-b-0">Welcome to Youcode Administration</p>
                                 </div>
                             </div>
@@ -252,7 +236,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="dashbord"> <i class="fa fa-home"></i> </a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="dashbord">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="dashbord">Home</a>
                                     </li>
                                 </ul>
                             </div>
@@ -265,7 +249,7 @@
                     <div class="main-body">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Accounts</h5>
+                                <h5>type of reservation</h5>
 
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
@@ -297,10 +281,28 @@
                                             <td>${ user.firstName }</td>
                                             <td>${ user.lastName }</td>
                                             <td>${ user.email }</td>
-                                            <c:if test="${ user.accepted==false}">
-                                            <td></td>
-                                            </c:if>
-                                            <td><button type="button" class="btn btn-success mr-5">Confirm</button>  <button type="button" class="btn btn-danger">Refuse</button> </td>
+
+                                            <c:choose>
+                                                <c:when test="${ user.accepted==false}">
+                                                    <td><span class="label label-danger">Not yet confirmed</span></td>
+                                                </c:when>
+                                                <c:when test="${ user.accepted==true}">
+                                                    <td><span class="label label-success">confirmed</span></td>
+                                                </c:when>
+
+                                            </c:choose>
+                                            <td>
+                                                <form action="confiEmail" method="post">
+                                                    <input type="hidden" value="${ user.id }" name="id">
+                                                    <input type="submit" value="Confirm" class="btn btn-success mr-3">
+                                                </form>
+
+                                                <form action="deleteEmail" method="post">
+                                                    <input type="hidden" value="${ user.id }" name="id">
+                                                    <input type="submit" value="Refuse" class="btn btn-danger">
+                                                </form>
+                                            </td>
+
 
                                         </tr>
 

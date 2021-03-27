@@ -23,7 +23,7 @@ public class ReservationRepostory {
 
         try {
 
-            Query query = session.createQuery("select u.dateRes,u.dateRes,u.typeRes.typeRes from ReservationEntity u  where u.user.idUser =:id");
+            Query query = session.createQuery(" from ReservationEntity u  where u.user.idUser =:id");
 
             query.setParameter("id", id);
 
@@ -35,5 +35,21 @@ public class ReservationRepostory {
 
         }
         return reservations;
+    }
+
+    public ReservationEntity Confirm(ReservationEntity reservation) {
+        ReservationEntity reservationEntity;
+        session = HibernateUtil.getSession();
+        session.beginTransaction();
+        reservationEntity = session.find(ReservationEntity.class, reservation.getId());
+        if (reservationEntity != null){
+            reservationEntity.setConfirmation(reservation.isConfirmation());
+
+            System.out.println("Res update");
+        }else{
+            System.out.println("Res does not exist");
+        }
+        session.getTransaction().commit();
+        return reservationEntity;
     }
 }

@@ -16,4 +16,21 @@ public class UserRepostory {
         session.getTransaction().commit();
         return userList;
     }
+
+
+
+    public UseradminEntity updateUserAccpect(UseradminEntity user) {
+        UseradminEntity userEntity;
+        session = HibernateUtil.getSession();
+        session.beginTransaction();
+        userEntity = session.find(UseradminEntity.class, user.getId());
+        if (userEntity != null){
+            userEntity.setAccepted(user.isAccepted());
+            System.out.println("User update");
+        }else{
+            System.out.println("User does not exist");
+        }
+        session.getTransaction().commit();
+        return userEntity;
+    }
 }

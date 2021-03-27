@@ -2,7 +2,6 @@ package org.example.Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 
 @Entity
@@ -59,6 +58,14 @@ public class UseradminEntity implements Serializable {
         this.password = password;
 
     }
+
+    public UseradminEntity(int id, boolean accepted) {
+        this.idUser = id;
+        this.accepted=accepted;
+
+    }
+
+
 
     public int getId() {
         return idUser;
@@ -133,7 +140,9 @@ public class UseradminEntity implements Serializable {
         return accepted;
     }
 
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
+    public boolean setAccepted(boolean accepted) {
+       return this.accepted = accepted;
     }
+
+
 }

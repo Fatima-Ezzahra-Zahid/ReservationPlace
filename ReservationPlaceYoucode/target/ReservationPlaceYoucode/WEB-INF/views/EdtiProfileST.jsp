@@ -137,7 +137,7 @@
                                     </a>
                                 </li>
                                 <li class="waves-effect waves-light">
-                                    <a href="auth-normal-sign-in.html">
+                                    <a href="loginDirect">
                                         <i class="ti-layout-sidebar-left"></i> Logout
                                     </a>
                                 </li>
@@ -167,7 +167,7 @@
                                     <a href="EditPfS">
                                         <i class="ti-user"></i> Editer profile
                                     </a>
-                                            <i class="ti-layout-sidebar-left"></i>Logout</a>
+                                          <a href="loginDirect">  <i class="ti-layout-sidebar-left"></i>Logout</a>
                                 </li>
                             </ul>
                         </div>

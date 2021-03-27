@@ -138,7 +138,7 @@
                                       </a>
                                   </li>
                                   <li class="waves-effect waves-light">
-                                      <a href="auth-normal-sign-in.html">
+                                      <a href="loginDirect">
                                           <i class="ti-layout-sidebar-left"></i> Logout
                                       </a>
                                   </li>
@@ -168,7 +168,7 @@
                                           <a href="EditPfS">
                                               <i class="ti-user"></i> Editer profile
                                           </a>
-                                                  <i class="ti-layout-sidebar-left"></i>Logout</a>
+                                              <a href="loginDirect">    <i class="ti-layout-sidebar-left"></i>Logout</a>
                                       </li>
                                   </ul>
                               </div>
@@ -202,35 +202,6 @@
                           </ul>
 
 
-                          <ul class="pcoded-item pcoded-left-item">
-
-                              <li class="pcoded-hasmenu">
-                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Settings</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                                  <ul class="pcoded-submenu">
-                                      <li class=" ">
-                                          <a href="loginDirect" class="waves-effect waves-dark">
-                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Login</span>
-                                              <span class="pcoded-mcaret"></span>
-                                          </a>
-                                      </li>
-                                      <li class=" ">
-                                          <a href="regestre" class="waves-effect waves-dark">
-                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Register</span>
-                                              <span class="pcoded-mcaret"></span>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </li>
-
-                          </ul>
 
                   </nav>
 
@@ -283,14 +254,30 @@
                                                   <th>Reservation date</th>
                                                   <th>Type of Reservation</th>
                                                   <th>Status</th>
+                                                  <th>Action</th>
                                               </tr>
                                               </thead>
                                               <tbody>
                                               <c:forEach items="${ reservations }" var="reservation">
                                                   <tr>
                                                       <td>${ reservation.dateRes }</td>
-                                                      <td>${ reservation.typeRes }</td>
-                                                      <td>${ reservation.confirmation }</td>
+                                                      <td>${ reservation.typeRes.typeRes }</td>
+                                                      <c:choose>
+                                                          <c:when test="${ reservation.confirmation==false}">
+                                                              <td><span class="label label-danger">Not yet confirmed</span></td>
+                                                          </c:when>
+                                                          <c:when test="${ reservation.confirmation==true}">
+                                                              <td><span class="label label-success">confirmed</span></td>
+                                                          </c:when>
+
+                                                      </c:choose>
+
+                                                      <td>
+                                                          <form action="deleteRestudent" method="post">
+                                                              <input type="hidden" value="${ reservation.id }" name="id">
+                                                              <input type="submit" value="Delete" class="btn btn-danger">
+                                                          </form>
+                                                      </td>
                                                   </tr>
                                               </c:forEach>
 

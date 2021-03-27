@@ -73,11 +73,27 @@ public class StudentController {
         String LName=req.getParameter("lastName");
         String email=req.getParameter("email");
         String password=req.getParameter("password");
+
         UseradminEntity useradminEntity=new UseradminEntity(id,FName,LName,email,password);
 
         userService.updateUser(useradminEntity);
 
-        return "DashbordStudent";
+        AuthenticatedUser.user=useradminEntity;
+
+        session.setAttribute("Fname",AuthenticatedUser.user.getFirstName());
+        session.setAttribute("lasname",AuthenticatedUser.user.getLastName());
+        return "redirect:/dashbord";
+    }
+
+    @RequestMapping(value = "deleteRestudent")
+    public String deleteRes(HttpServletRequest req)
+    {
+
+        int id= Integer.parseInt(req.getParameter("id"));
+
+        reservationService.deleteRes(id);
+
+        return "redirect:/dashbord";
     }
 
 }
