@@ -282,20 +282,20 @@
                                             <div class="col-sm-10">
                                                 <input   name="typeres" type="text"  class="form-control" value="<c:out value='${type.typeRes}' />"/>
                                             </div>
-
-
-
-                                        <div class="line"></div><br>
-                                        <div class="form-group row">
-                                            <div class="col-sm-4 offset-sm-2">
-                                                <button type="submit" id="annuler"
-                                                        class="btn btn-secondary mb-2">Cancel</button>
-                                                <button type="submit" class="btn btn-primary mb-2">
-                                                    Update</button>
-                                            </div>
-                                            <!-- Page-body end -->
                                         </div>
-                                        <div id="styleSelector"> </div>
+
+
+
+                                            <div class="line"></div><br>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4 offset-sm-2">
+                                                    <a href="ModifType" class="btn btn-secondary mb-2">Cancel</a>
+                                                    <button type="submit" class="btn btn-primary mb-2">
+                                                        Update</button>
+                                                </div>
+                                                <!-- Page-body end -->
+                                            </div>
+                                            <div id="styleSelector"> </div>
                                     </form>
                                 </div>
                             </div>

@@ -43,15 +43,24 @@ public class StudentController {
     @RequestMapping(value = "dashbord")
     public String rege(@ModelAttribute("dashbord") ReservationEntity reservationEntity, Model model, HttpSession session){
 
-        ReservationRepostory reservationRepostory=new ReservationRepostory();
-        Object idUser=session.getAttribute("id");
-        System.out.println(idUser);
-        List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
+        if(session.getAttribute("id")!=null)
+        {
+            ReservationRepostory reservationRepostory=new ReservationRepostory();
+            Object idUser=session.getAttribute("id");
+            System.out.println(idUser);
+            List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
 
-         model.addAttribute("reservations",reservations);
-        System.out.println(reservations);
+            model.addAttribute("reservations",reservations);
+            System.out.println(reservations);
 
-        return "DashbordStudent";
+            return "DashbordStudent";
+        }
+        else
+        {
+            return "redirect:/loginDirect";
+
+        }
+
     }
 
     @RequestMapping(value = "EditPfS")

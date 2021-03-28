@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.Entity.ReservationEntity;
+import org.example.Entity.StudentEntity;
 import org.example.Entity.UseradminEntity;
 import org.example.Global.AuthenticatedUser;
 import org.example.Repostory.ReservationRepostory;
@@ -31,16 +32,25 @@ public class AdminController {
 
 
     @RequestMapping(value = "dashbordadmin")
-    public String rege(@ModelAttribute("dashbord")UseradminEntity useradminEntity, Model model){
+    public String rege(@ModelAttribute("dashbord")UseradminEntity useradminEntity, Model model,HttpSession session){
 
-        UserRepostory userRepostory=new UserRepostory();
+        if(session.getAttribute("id")!=null)
+        {
+            UserRepostory userRepostory=new UserRepostory();
 
-        List<UseradminEntity> users = userRepostory.getAllStudents();
+            List<UseradminEntity> users = userRepostory.getAllStudents();
 
-         model.addAttribute("users",users);
-        System.out.println(users);
+            model.addAttribute("users",users);
+            System.out.println(users);
 
-        return "AdmiDashbord";
+            return "AdmiDashbord";
+        }
+
+        else
+        {
+            return "redirect:/loginDirect";
+
+        }
     }
 
 
@@ -105,9 +115,6 @@ public class AdminController {
         ReservationEntity reservationEntity=new ReservationEntity(id,accpeted);
 
         resevationRepostory.Confirm(reservationEntity);
-
-
-
 
 
         return "redirect:/ShowRes";

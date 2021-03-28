@@ -282,21 +282,27 @@
                                             <div class="col-sm-10">
                                                 <input   name="typeres" type="text"  class="form-control" />
                                             </div>
+                                        </div>
 
 
 
                                             <div class="line"></div><br>
                                             <div class="form-group row">
                                                 <div class="col-sm-4 offset-sm-2">
-                                                    <button type="submit" id="annuler"
-                                                            class="btn btn-secondary mb-2">Cancel</button>
                                                     <button type="submit" class="btn btn-primary mb-2">
-                                                        Update</button>
+                                                        Add</button>
+                                                    <a href="TypeRes" class="btn btn-secondary mb-2">Cancel</a>
                                                 </div>
                                                 <!-- Page-body end -->
                                             </div>
                                             <div id="styleSelector"> </div>
                                     </form>
+
+
+
+
+                                        <!-- Page-body end -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
