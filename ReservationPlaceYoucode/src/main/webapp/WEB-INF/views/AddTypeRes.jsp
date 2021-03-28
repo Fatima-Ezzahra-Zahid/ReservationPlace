@@ -170,7 +170,7 @@
                                     <a href="EditPfAdmin">
                                         <i class="ti-user"></i> Editer profile
                                     </a>
-                                    <a href="/loginDirect"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                    <a href="loginDirect"> <i class="ti-layout-sidebar-left"></i>Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -193,7 +193,7 @@
 
                     <ul class="pcoded-item pcoded-left-item">
                         <li class="active">
-                            <a href="TypeRes" class="waves-effect waves-dark">
+                            <a href="ShowRes" class="waves-effect waves-dark">
                                 <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                 <span class="pcoded-mtext" data-i18n="nav.form-components.main">
                                             Reservations</span>
@@ -249,7 +249,7 @@
                     <div class="main-body">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Reservation</h5>
+                                <h5>Type of Reservation</h5>
 
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
@@ -263,66 +263,47 @@
                             </div>
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
 
-                                        <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Gmail</th>
-                                            <th>Reservation</th>
-                                            <th>Reservation Date</th>
-                                            <th>Statut</th>
-                                            <th>Confirmation</th>
-                                        </tr>
-
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${res}"  var="res">
-                                            <tr>
-                                                <td>${ res.user.firstName }</td>
-                                                <td>${ res.user.lastName}</td>
-                                                <td>${ res.user.email}</td>
-                                                <td>${ res.typeRes.typeRes}</td>
-                                                <td>${ res.dateRes}</td>
-
-                                                <c:choose>
-                                                    <c:when test="${ res.confirmation==false}">
-                                                        <td><span class="label label-danger">Not yet confirmed</span></td>
-                                                    </c:when>
-                                                    <c:when test="${ res.confirmation==true}">
-                                                        <td><span class="label label-success">confirmed</span></td>
-                                                    </c:when>
-
-                                                </c:choose>
-                                                <td>
-                                                    <form action="confiRes" method="post">
-                                                        <input type="hidden" value="${ res.id }" name="id">
-                                                        <input type="submit" value="Confirm" class="btn btn-success mr-5">
-                                                    </form>
-
-                                                    <form action="deleteRes" method="post">
-                                                        <input type="hidden" value="${ res.id }" name="id">
-                                                        <input type="submit" value="Refuse" class="btn btn-danger">
-                                                    </form>
-                                                </td>
+                                    <form class="form-horizontal"   action="AddType" method="post">
 
 
-                                            </tr>
-
-                                        </c:forEach>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2">number of Student</label>
+                                            <div class="col-sm-10">
+                                                <input   name="nbr"   type="number" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div><br>
 
 
 
-                                        </tbody>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2"> Type of Reservation</label>
+                                            <div class="col-sm-10">
+                                                <input   name="typeres" type="text"  class="form-control" />
+                                            </div>
 
-                                    </table>
+
+
+                                            <div class="line"></div><br>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4 offset-sm-2">
+                                                    <button type="submit" id="annuler"
+                                                            class="btn btn-secondary mb-2">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary mb-2">
+                                                        Add</button>
+                                                </div>
+                                                <!-- Page-body end -->
+                                            </div>
+                                            <div id="styleSelector"> </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         <!-- Page-body end -->
                     </div>
-                    <div id="styleSelector"> </div>
+
                 </div>
             </div>
         </div>

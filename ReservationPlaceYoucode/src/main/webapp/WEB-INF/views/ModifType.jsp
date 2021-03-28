@@ -179,7 +179,7 @@
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
                     <ul class="pcoded-item pcoded-left-item">
                         <li class="active">
-                            <a href="dashbord" class="waves-effect waves-dark">
+                            <a href="dashbordadmin" class="waves-effect waves-dark">
                                 <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                 <span class="pcoded-mtext" data-i18n="nav.dash.main">Home</span>
                                 <span class="pcoded-mcaret"></span>
@@ -234,7 +234,7 @@
                             <div class="col-md-4">
                                 <ul class="breadcrumb-title">
                                     <li class="breadcrumb-item">
-                                        <a href="dashbord"> <i class="fa fa-home"></i> </a>
+                                        <a href="dashbordadmin"> <i class="fa fa-home"></i> </a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="dashbord">Home</a>
                                     </li>
@@ -249,7 +249,7 @@
                     <div class="main-body">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Accounts</h5>
+                                <h5>Type of Reservation</h5>
 
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
@@ -264,7 +264,7 @@
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
 
-                                    <form class="form-horizontal"   action="ProsseModifPr" method="post">
+                                    <form class="form-horizontal"   action="ProsseModifType" method="post">
 
 
                                         <div class="form-group row">
@@ -282,10 +282,6 @@
                                             <div class="col-sm-10">
                                                 <input   name="typeres" type="text"  class="form-control" value="<c:out value='${type.typeRes}' />"/>
                                             </div>
-                                        </div>
-                                        <div class="line"></div><br>
-
-
 
 
 

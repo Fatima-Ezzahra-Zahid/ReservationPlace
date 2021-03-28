@@ -35,7 +35,7 @@ public class StudentController {
         System.out.println(reservationEntity.getTypeRes().getId());
         reservationEntity.setUser(AuthenticatedUser.user);
        reservationService.addRes(reservationEntity);
-       return "DashbordStudent";
+        return "redirect:/dashbord";
 
     }
 
