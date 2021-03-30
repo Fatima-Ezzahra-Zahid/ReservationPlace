@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,7 +31,7 @@ public class AdminController {
     @Autowired
     private ReservationService reservationService;
 
-
+    ReservationRepostory reservationRepostory=new ReservationRepostory();
 
 
     @RequestMapping(value = "dashbordadmin")
@@ -99,7 +102,19 @@ public class AdminController {
 
 
 
-        List<ReservationEntity> reservations = reservationService.getAllRes();
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, 1);
+        dt = c.getTime();
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd ");
+
+
+        System.out.println(dt);
+
+
+
+        List<ReservationEntity> reservations = reservationRepostory.getAllReservationsDat(formatter.format(dt));
 
         model.addAttribute("res",reservations);
 
@@ -184,7 +199,7 @@ public class AdminController {
     @RequestMapping(value = "ShowResByDate")
     public String ShoweResDate(@ModelAttribute("dashbord")ReservationEntity reservationEntity, Model model,HttpServletRequest req){
 
-        ReservationRepostory reservationRepostory=new ReservationRepostory();
+
 
         String dateres=req.getParameter("date");
 
