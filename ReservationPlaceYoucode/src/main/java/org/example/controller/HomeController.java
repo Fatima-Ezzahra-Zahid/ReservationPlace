@@ -112,7 +112,7 @@ private TypeResService typeResService;
 			studentEntity.setRole(roleEntity);
 			userService.addUser(studentEntity);
 			System.out.println(studentEntity.getFirstName());
-			return "home";
+			return "redirect:/loginDirect";
 		}else{
 			return "login";
 		}

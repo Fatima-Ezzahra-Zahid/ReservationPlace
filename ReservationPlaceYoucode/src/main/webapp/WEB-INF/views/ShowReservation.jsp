@@ -90,7 +90,7 @@
                         <i class="ti-menu"></i>
                     </a>
 
-                    <a href="index.html">
+                    <a href="dashbordadmin">
                         <img class="img-fluid" src="<c:url value="/resources/images/logo.jpg"/>" alt="Theme-Logo" />
                     </a>
                     <a class="mobile-options waves-effect waves-light">
@@ -263,6 +263,18 @@
                             </div>
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
+
+                                    <form action="ShowResByDate" method="post">
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-10">
+                                                <input path="dateRes" type="date" onload="getDate()" class="form-control" id="date" name="date"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mb-2">search by date</button>
+                                        </div>
+
+                                    </form>
+
                                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
 
@@ -331,7 +343,15 @@
 </div>
 </div>
 
+<script>
+    function getDate(){
+        var today = new Date();
 
+        document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+
+
+    }
+</script>
 
 
 <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>

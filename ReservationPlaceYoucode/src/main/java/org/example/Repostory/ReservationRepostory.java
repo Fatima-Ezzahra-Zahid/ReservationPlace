@@ -52,4 +52,27 @@ public class ReservationRepostory {
         session.getTransaction().commit();
         return reservationEntity;
     }
+
+
+    public List<ReservationEntity> getAllReservationsDat(String date) {
+
+        session = HibernateUtil.getSession();
+
+        List reservations = null;
+
+        try {
+
+            Query query = session.createQuery(" from ReservationEntity u  where u.dateRes =:dateRes");
+
+            query.setParameter("dateRes", date);
+
+            reservations = query.getResultList();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+
+        }
+        return reservations;
+    }
 }

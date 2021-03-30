@@ -6022,6 +6022,8 @@ table tbody .border-bottom-info td {
 /**  =====================
       Main-header css start
 ==========================  **/
+
+
 .header-navbar {
   min-height: 56px;
   padding: 0; }
@@ -6043,7 +6045,13 @@ table tbody .border-bottom-info td {
       .header-navbar .navbar-wrapper .navbar-logo {
         -webkit-box-pack: center;
             -ms-flex-pack: center;
-                justify-content: center; } }
+                justify-content: center; }
+      .logo {
+        max-width: 21%;
+        height: auto;
+      }
+
+    }
     .header-navbar .navbar-wrapper .navbar-logo h5 {
       margin-bottom: 0; }
     .header-navbar .navbar-wrapper .navbar-logo .mobile-menu {

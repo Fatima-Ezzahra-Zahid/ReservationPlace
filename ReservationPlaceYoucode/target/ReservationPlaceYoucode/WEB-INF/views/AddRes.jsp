@@ -87,7 +87,7 @@
                         <i class="ti-menu"></i>
                     </a>
 
-                    <a href="index.html">
+                    <a href="dashbord">
                         <img class="img-fluid" src="<c:url value="/resources/images/logo.jpg"/>" alt="Theme-Logo" />
                     </a>
                     <a class="mobile-options waves-effect waves-light">
@@ -300,8 +300,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4 offset-sm-2">
                                                <a href="dashbord" ><button type="submit" id="annuler" class="btn btn-secondary mb-2">Cancel</button></a>
-                                                <button type="submit" class="btn btn-primary mb-2">
-                                                    Add</button>
+                                                <button type="submit" class="btn btn-primary mb-2">Add</button>
                                             </div>
                                             <!-- Page-body end -->
                                         </div>

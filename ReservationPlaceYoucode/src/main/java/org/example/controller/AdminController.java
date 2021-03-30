@@ -77,9 +77,17 @@ public class AdminController {
     public String deletemEmail(HttpServletRequest req)
     {
 
+        UserRepostory userRepostory=new UserRepostory();
         int id= Integer.parseInt(req.getParameter("id"));
 
-        userService.deleteUser(id);
+        boolean accpeted=AuthenticatedUser.user.setAccepted(false);
+
+        UseradminEntity useradminEntity=new UseradminEntity(id,accpeted);
+
+        userRepostory.updateUserAccpect(useradminEntity);
+
+
+
 
         return "redirect:/dashbordadmin";
     }
@@ -125,9 +133,16 @@ public class AdminController {
     public String deleteRes(HttpServletRequest req)
     {
 
+        ReservationEntity res=new ReservationEntity();
+        ReservationRepostory resevationRepostory=new ReservationRepostory();
         int id= Integer.parseInt(req.getParameter("id"));
 
-        reservationService.deleteRes(id);
+        boolean accpeted=res.setConfirmation(false);
+
+        ReservationEntity reservationEntity=new ReservationEntity(id,accpeted);
+
+        resevationRepostory.Confirm(reservationEntity);
+
 
         return "redirect:/ShowRes";
     }
@@ -162,6 +177,24 @@ public class AdminController {
         session.setAttribute("Fname",AuthenticatedUser.user.getFirstName());
         session.setAttribute("lasname",AuthenticatedUser.user.getLastName());
         return "redirect:/dashbordadmin";
+    }
+
+
+
+    @RequestMapping(value = "ShowResByDate")
+    public String ShoweResDate(@ModelAttribute("dashbord")ReservationEntity reservationEntity, Model model,HttpServletRequest req){
+
+        ReservationRepostory reservationRepostory=new ReservationRepostory();
+
+        String dateres=req.getParameter("date");
+
+
+        List<ReservationEntity> reservations = reservationRepostory.getAllReservationsDat(dateres);
+
+        model.addAttribute("res",reservations);
+
+
+        return "ShowReservation";
     }
 
 

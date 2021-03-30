@@ -38,11 +38,11 @@
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <form:input path="email" type="email" name="email" id="email" placeholder="Your Email"/>
+                            <form:input path="email" type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[student]+.+[youcode]+.+[a-z]{2,}$"  title="enter your youcode email" placeholder="Your Email" />
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <form:input path="phone" type="number" name="phone" id="phone" placeholder="Your Phone"/>
+                            <form:input path="phone" type="text" pattern="[0]{1}[6-7]{1}[0-9]{8}" title="enter valid phone" placeholder="Your Phone"/>
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>

@@ -90,7 +90,7 @@
                         <i class="ti-menu"></i>
                     </a>
 
-                    <a href="index.html">
+                    <a href="dashbordadmin">
                         <img class="img-fluid" src="<c:url value="/resources/images/logo.jpg"/>" alt="Theme-Logo" />
                     </a>
                     <a class="mobile-options waves-effect waves-light">
