@@ -1,9 +1,11 @@
 package org.example.controller;
 
 
+import org.example.DAO.TypeResDaoImpl;
 import org.example.Entity.*;
 import org.example.Global.AuthenticatedUser;
 import org.example.Repostory.ReservationRepostory;
+import org.example.Repostory.TypeResRepository;
 import org.example.service.ReservationService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +29,28 @@ public class StudentController {
     @Autowired
     private UserService userService;
 
-
+    @Autowired
+    private TypeResDaoImpl typeResDao;
 
     @RequestMapping(value = "/prossecRes")
-    public  String ProsseRes(@ModelAttribute("res") ReservationEntity reservationEntity)
+    public  String ProsseRes(@ModelAttribute("res") ReservationEntity reservationEntity,HttpServletRequest req)
     {
-        System.out.println(reservationEntity.getTypeRes().getId());
         reservationEntity.setUser(AuthenticatedUser.user);
-       reservationService.addRes(reservationEntity);
-        return "redirect:/dashbord";
+        ReservationRepostory reservationRepostory=new ReservationRepostory();
+        int idType = reservationEntity.getTypeRes().getId();
+        TypereservationEntity typereservationEntity = typeResDao.getTypeResById(idType);
+        if(typereservationEntity.getNomberClass()>reservationRepostory.getAllReservationsDat(reservationEntity.getDateRes()).size())
+        {
+            reservationEntity.setConfirmation(true);
+            reservationService.addRes(reservationEntity);
+            return "redirect:/dashbord";
+        }
+        else
+        {
+            reservationEntity.setConfirmation(false);
+            reservationService.addRes(reservationEntity);
+            return "redirect:/dashbord";
+        }
 
     }
 
@@ -47,11 +62,9 @@ public class StudentController {
         {
             ReservationRepostory reservationRepostory=new ReservationRepostory();
             Object idUser=session.getAttribute("id");
-            System.out.println(idUser);
             List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
 
             model.addAttribute("reservations",reservations);
-            System.out.println(reservations);
 
             return "DashbordStudent";
         }

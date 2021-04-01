@@ -4,6 +4,7 @@ import org.example.DAO.*;
 import org.example.DAO.RoleDaoImpl;
 import org.example.Entity.*;
 import org.example.Repostory.ReservationRepostory;
+import org.example.Repostory.TypeResRepository;
 import org.example.service.UserService;
 import org.example.util.HibernateUtil;
 import org.hibernate.Session;
@@ -116,18 +117,19 @@ public static void main(final String[] args) throws Exception {
 
 //    ReservationDaoImpl reservationDao=new ReservationDaoImpl();
 //    System.out.println(reservationDao.getResById(7));
-
-    ReservationRepostory reservationRepostory=new ReservationRepostory();
-
-    List<ReservationEntity> reservations= reservationRepostory.getAllReservationsById(7);
-
-    for (ReservationEntity  res: reservations) {
-			System.out.println("Année : " +res.getDateRes()+"  "+"Type : "+res.getTypeRes().getTypeRes());
-
-		}
-
-
+//
+//    ReservationRepostory reservationRepostory=new ReservationRepostory();
+//
+//    List<ReservationEntity> reservations= reservationRepostory.getAllReservationsById(7);
+//
+//    for (ReservationEntity  res: reservations) {
+//			System.out.println("Année : " +res.getDateRes()+"  "+"Type : "+res.getTypeRes().getTypeRes());
+//
+//		}
 
 
+//        TypeResRepository typeResRepository = new TypeResRepository();
+//        TypereservationEntity typereservationEntity = typeResRepository.getTypeResbyName("09:00--->17:00");
+//        System.out.println(typereservationEntity.getNomberClass());
 }
 }

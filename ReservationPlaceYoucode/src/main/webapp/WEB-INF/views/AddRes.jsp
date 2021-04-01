@@ -276,7 +276,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2">Type of Reservation </label>
                                             <div class="col-sm-10">
-                                                <form:select path="typeRes.id" cssClass="form-control">
+                                                <form:select path="typeRes.id" cssClass="form-control" >
                                                     <c:forEach items="${ list }" var="elem">
                                                         <form:option value="${elem.id}">${elem.typeRes}</form:option>
                                                     </c:forEach>
