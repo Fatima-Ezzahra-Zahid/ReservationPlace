@@ -11,8 +11,10 @@ import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,8 +34,9 @@ public class StudentController {
     @Autowired
     private TypeResDaoImpl typeResDao;
 
-    @RequestMapping(value = "/prossecRes")
-    public  String ProsseRes(@ModelAttribute("res") ReservationEntity reservationEntity,HttpServletRequest req)
+    @RequestMapping(value = "/prossecRes", method = RequestMethod.POST)
+
+    public  String ProsseRes(@ModelAttribute("res") ReservationEntity reservationEntity, HttpServletRequest req, Model model, HttpSession session)
     {
         reservationEntity.setUser(AuthenticatedUser.user);
         ReservationRepostory reservationRepostory=new ReservationRepostory();
@@ -41,36 +44,45 @@ public class StudentController {
         TypereservationEntity typereservationEntity = typeResDao.getTypeResById(idType);
         if(typereservationEntity.getNomberClass()>reservationRepostory.getAllReservationsDat(reservationEntity.getDateRes()).size())
         {
+            Object idUser=session.getAttribute("id");
+            List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
             reservationEntity.setConfirmation(true);
+            model.addAttribute("reservations",reservations);
             reservationService.addRes(reservationEntity);
-            return "redirect:/dashbord";
+            model.addAttribute("msg",  "Well add");
+            return "DashbordStudent";
         }
         else
         {
+            Object idUser=session.getAttribute("id");
+            List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
+            model.addAttribute("reservations",reservations);
+
             reservationEntity.setConfirmation(false);
             reservationService.addRes(reservationEntity);
-            return "redirect:/dashbord";
+            model.addAttribute("msg",  "Well add");
+            return "DashbordStudent";
         }
 
-    }
 
+    }
 
     @RequestMapping(value = "dashbord")
     public String rege(@ModelAttribute("dashbord") ReservationEntity reservationEntity, Model model, HttpSession session){
 
-        if(session.getAttribute("id")!=null)
+        if(session.getAttribute("id")!=null&&session.getAttribute("role").equals("student"))
         {
             ReservationRepostory reservationRepostory=new ReservationRepostory();
             Object idUser=session.getAttribute("id");
             List<ReservationEntity> reservations = reservationRepostory.getAllReservationsById((Integer) idUser);
-
+            model.addAttribute("msg", "");
             model.addAttribute("reservations",reservations);
 
             return "DashbordStudent";
         }
         else
         {
-            return "redirect:/loginDirect";
+            return "redirect:/";
 
         }
 

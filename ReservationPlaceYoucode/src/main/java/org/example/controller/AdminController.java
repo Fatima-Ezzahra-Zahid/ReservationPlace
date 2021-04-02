@@ -9,6 +9,8 @@ import org.example.Repostory.UserRepostory;
 import org.example.service.ReservationService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,8 +30,9 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+
     @Autowired
-    private ReservationService reservationService;
+    private JavaMailSender mailSender;
 
     ReservationRepostory reservationRepostory=new ReservationRepostory();
 
@@ -37,7 +40,7 @@ public class AdminController {
     @RequestMapping(value = "dashbordadmin")
     public String rege(@ModelAttribute("dashbord")UseradminEntity useradminEntity, Model model,HttpSession session){
 
-        if(session.getAttribute("id")!=null)
+        if(session.getAttribute("id")!=null&&session.getAttribute("role").equals("admin"))
         {
             UserRepostory userRepostory=new UserRepostory();
 
@@ -51,7 +54,7 @@ public class AdminController {
 
         else
         {
-            return "redirect:/loginDirect";
+            return "redirect:/";
 
         }
     }
@@ -69,7 +72,19 @@ public class AdminController {
 
         userRepostory.updateUserAccpect(useradminEntity);
 
+       useradminEntity=userService.getUserById(id);
 
+        //send mail
+        String email = useradminEntity.getEmail();
+        String subject = "request to join in ResApp";
+        String message = "your request has been accepted";
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setTo(email);
+        simpleMailMessage.setSubject(subject);
+        simpleMailMessage.setText(message);
+        simpleMailMessage.setFrom("ResApp");
+        mailSender.send(simpleMailMessage);
 
 
         return "redirect:/dashbordadmin";
@@ -89,6 +104,20 @@ public class AdminController {
 
         userRepostory.updateUserAccpect(useradminEntity);
 
+        useradminEntity=userService.getUserById(id);
+
+        //send mail
+        String email = useradminEntity.getEmail();
+        String subject = "request to join in ResApp";
+        String message = "your request does not accept";
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setTo(email);
+        simpleMailMessage.setSubject(subject);
+        simpleMailMessage.setText(message);
+        simpleMailMessage.setFrom("ResApp");
+        mailSender.send(simpleMailMessage);
+
 
 
 
@@ -98,28 +127,33 @@ public class AdminController {
 
 
     @RequestMapping(value = "ShowRes")
-    public String ShoweRes(@ModelAttribute("dashbord")ReservationEntity reservationEntity, Model model){
+    public String ShoweRes(@ModelAttribute("dashbord")ReservationEntity reservationEntity, Model model,HttpSession session){
 
 
+        if(session.getAttribute("id")!=null&&session.getAttribute("role").equals("admin")) {
 
-        Date dt = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(dt);
-        c.add(Calendar.DATE, 1);
-        dt = c.getTime();
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd ");
-
-
-        System.out.println(dt);
+            Date dt = new Date();
+            Calendar c = Calendar.getInstance();
+            c.setTime(dt);
+            c.add(Calendar.DATE, 1);
+            dt = c.getTime();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd ");
 
 
-
-        List<ReservationEntity> reservations = reservationRepostory.getAllReservationsDat(formatter.format(dt));
-
-        model.addAttribute("res",reservations);
+            System.out.println(dt);
 
 
-        return "ShowReservation";
+            List<ReservationEntity> reservations = reservationRepostory.getAllReservationsDat(formatter.format(dt));
+
+            model.addAttribute("res", reservations);
+
+
+            return "ShowReservation";
+        }
+        else
+        {
+            return "redirect:/";
+        }
     }
 
 

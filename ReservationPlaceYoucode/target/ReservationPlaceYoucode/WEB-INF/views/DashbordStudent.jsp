@@ -247,7 +247,25 @@
                                       </div>
                                   </div>
                                   <div class="card-block table-border-style">
+
                                       <div class="table-responsive">
+
+                                          <c:choose>
+                                              <c:when test="${msg != null}">
+
+                                                  <div class="alert alert-primary alert-dismissible fade show">
+                                                      <strong><c:out value="${msg}" /></strong>
+                                                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                  </div>
+                                              </c:when>
+                                              <c:when test="${msg = null}">
+                                                  <span></span>
+                                              </c:when>
+
+                                          </c:choose>
+
+
+
                                           <table class="table">
                                               <thead>
                                               <tr>

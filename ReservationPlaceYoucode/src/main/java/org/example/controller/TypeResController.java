@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +51,7 @@ public class TypeResController {
     }
 
 
-    @RequestMapping(value = "ProsseModifType")
+    @RequestMapping(value = "ProsseModifType",method = RequestMethod.POST)
     public String ModifProfile(HttpServletRequest req, HttpSession session)
     {
         Object idURes=session.getAttribute("id");
@@ -65,7 +66,7 @@ public class TypeResController {
         return "redirect:/TypeRes";
     }
 
-    @RequestMapping(value = "deleteTypeRes")
+    @RequestMapping(value = "deleteTypeRes",method = RequestMethod.POST)
     public String deleteType(HttpServletRequest req)
     {
 
@@ -87,14 +88,15 @@ public class TypeResController {
         return "AddTypeRes";
     }
 
-    @RequestMapping(value = "AddType")
-    public String AddTypeRes(HttpServletRequest req){
+    @RequestMapping(value = "AddType",method = RequestMethod.POST)
+    public String AddTypeRes(HttpServletRequest req,Model model){
 
 
         int nbr= Integer.parseInt(req.getParameter("nbr"));
         String type=req.getParameter("typeres");
         TypereservationEntity typereservationEntity=new TypereservationEntity(type,nbr);
         typeResService.addTypeRes(typereservationEntity);
+
 
 
         return "redirect:/TypeRes";

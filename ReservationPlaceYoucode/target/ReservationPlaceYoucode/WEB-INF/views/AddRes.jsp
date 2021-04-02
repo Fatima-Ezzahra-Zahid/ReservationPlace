@@ -202,35 +202,6 @@
                     </ul>
 
 
-                    <ul class="pcoded-item pcoded-left-item">
-
-                        <li class="pcoded-hasmenu">
-                            <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Settings</span>
-                                <span class="pcoded-mcaret"></span>
-                            </a>
-                            <ul class="pcoded-submenu">
-                                <li class=" ">
-                                    <a href="loginDirect" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                        <span class="pcoded-mtext"
-                                              data-i18n="nav.basic-components.alert">Login</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class=" ">
-                                    <a href="regestre" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                        <span class="pcoded-mtext"
-                                              data-i18n="nav.basic-components.breadcrumbs">Register</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
 
                 </nav>
 

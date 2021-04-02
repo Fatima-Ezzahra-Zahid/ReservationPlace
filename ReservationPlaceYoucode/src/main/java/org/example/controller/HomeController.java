@@ -48,9 +48,10 @@ private TypeResService typeResService;
 
 
 	// Authentification
-	@RequestMapping(value="/prosseForm")
-	public String ProsseLogin(@ModelAttribute("userlogin") UseradminEntity useradminEntity, HttpSession session)
+	@RequestMapping(value="/prosseFormLogin",method = RequestMethod.POST)
+	public String ProsseLogin(@ModelAttribute("userlogin") UseradminEntity useradminEntity, HttpSession session,Model model)
 	{
+
 
 		LoginRepostory loginRepostory=new LoginRepostory();
 
@@ -60,12 +61,29 @@ private TypeResService typeResService;
 			session.setAttribute("id",AuthenticatedUser.user.getId());
 			session.setAttribute("Fname",AuthenticatedUser.user.getFirstName());
 			session.setAttribute("lasname",AuthenticatedUser.user.getLastName());
-			if (user.getRole().getRoleName().equals("admin")) {
+			session.setAttribute("role",user.getRole().getRoleName());
+			if (session.getAttribute("role").equals("admin")) {
 				return "redirect:/dashbordadmin";
-			} else if (user.getRole().getRoleName().equals("student")) {
+			} else if (session.getAttribute("role").equals("student")) {
+
 				return "redirect:/dashbord";
 			}
+
+
+
 		}
+		else if(user!=null &&user.isAccepted()==false)
+		{
+			model.addAttribute("msg","Your account not yet confirmed");
+			return "login";
+		}
+		else if(user==null)
+		{
+			model.addAttribute("msg"," Your incorrect password or username");
+			return "login";
+		}
+
+
 		return "redirect:/";
 	}
 

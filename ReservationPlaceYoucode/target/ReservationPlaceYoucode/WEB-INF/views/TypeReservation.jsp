@@ -266,6 +266,7 @@
 
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
+                                    <span><c:out value="${msg}"></c:out></span>
                                     <table class="table">
                                         <thead>
                                         <tr>

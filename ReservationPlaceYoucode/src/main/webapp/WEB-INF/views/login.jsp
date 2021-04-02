@@ -35,9 +35,10 @@
                     <div class="col-md-8">
                         <div class="mb-4">
                             <h3>Sign In</h3>
-                            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
                         </div>
-                <form:form method="post" modelAttribute="userlogin" action="prosseForm">
+
+                        <span><c:out value="${msg}" /></span>
+                <form:form method="post" modelAttribute="userlogin" action="prosseFormLogin">
                             <div class="form-group first">
                                 <label for="username">Username</label>
                                 <form:input  path="email" type="text" class="form-control" id="username" name="username"/>
