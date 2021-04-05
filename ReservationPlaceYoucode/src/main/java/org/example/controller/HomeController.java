@@ -13,6 +13,7 @@ import org.example.Repostory.LoginRepostory;
 import org.example.service.TypeResService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,13 +32,12 @@ public class HomeController {
 @Autowired
 private TypeResService typeResService;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	private UseradminEntity user;
 
 
-//	@RequestMapping(value="/")
-//	public ModelAndView test(HttpServletResponse response) throws IOException{
-//		return new ModelAndView("login");
-//	}
 
 	//display login
 	@RequestMapping(value="/")
@@ -55,9 +55,13 @@ private TypeResService typeResService;
 
 		LoginRepostory loginRepostory=new LoginRepostory();
 
-		user=  loginRepostory.getUserByEmailPassword(useradminEntity.getEmail(),useradminEntity.getPassword());
+		user=  loginRepostory.getUserByEmail(useradminEntity.getEmail());
 		AuthenticatedUser.user = user;
-		if (user != null && user.getPassword().equals(useradminEntity.getPassword()) && user.isAccepted()==true) {
+
+		System.out.println(useradminEntity.getPassword());
+		System.out.println(user.getPassword());
+
+		if (user != null && passwordEncoder.matches(useradminEntity.getPassword(), user.getPassword()) && user.isAccepted()==true) {
 			session.setAttribute("id",AuthenticatedUser.user.getId());
 			session.setAttribute("Fname",AuthenticatedUser.user.getFirstName());
 			session.setAttribute("lasname",AuthenticatedUser.user.getLastName());
@@ -132,7 +136,7 @@ private TypeResService typeResService;
 			System.out.println(studentEntity.getFirstName());
 			return "redirect:/loginDirect";
 		}else{
-			return "login";
+			return "redirect:/regestre";
 		}
 
 	}

@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <form:input path="password" type="password" pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name="pass" id="pass"  title="enter UpperCase, LowerCase, Number/SpecialChar and min 8 Chars" placeholder="Password"/>
+                            <form:input path="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="pass" id="pass"  title="enter UpperCase, LowerCase, Number/SpecialChar and min 8 Chars" placeholder="Password"/>
                         </div>
                         <div class="form-group">
                             <label ><i class="zmdi zmdi-lock-outline"></i></label>

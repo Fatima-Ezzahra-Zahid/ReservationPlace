@@ -1,19 +1,19 @@
 package org.example.config;
 
-import org.example.DAO.UserDAO;
-import org.example.DAO.UserDaoImpl;
-import org.example.service.UserService;
-import org.example.service.UserServiceImpl;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
 
 import java.util.Properties;
 
@@ -50,6 +50,12 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		return mailSender;
 	}
 
+
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 
 

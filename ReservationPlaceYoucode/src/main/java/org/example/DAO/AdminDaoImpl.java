@@ -4,6 +4,8 @@ package org.example.DAO;
 import org.example.util.HibernateUtil;
 import org.example.Entity.AdminEntity;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -12,11 +14,17 @@ import java.util.List;
 @Repository
 @Component
 public class AdminDaoImpl implements AdminDAO{
+
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    
     Session session;
     @Override
     public void addAdmin(AdminEntity admin) {
         session = HibernateUtil.getSession();
         session.beginTransaction();
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         session.save(admin);
         session.getTransaction().commit();
         System.out.println("add admin");

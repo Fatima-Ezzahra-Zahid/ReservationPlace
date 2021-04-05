@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <form:input path="email" type="email" name="email" id="email" pattern="[A-Za-z0-9._%+-]+@[student]+\.+[youcode]+\.+[a-z]{2,}$"  title="enter your youcode email" placeholder="Your Email" />
+                            <form:input path="email" type="email" name="email" id="email"   title="enter your youcode email" placeholder="Your Email" />
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <form:input path="password" type="password" pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name="pass" id="pass"  title="enter UpperCase, LowerCase, Number/SpecialChar and min 8 Chars" placeholder="Password"/>
+                            <form:input path="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="pass" id="pass"  title="enter UpperCase, LowerCase, Number/SpecialChar and min 8 Chars" placeholder="Password"/>
                         </div>
                         <div class="form-group">
                             <label ><i class="zmdi zmdi-lock-outline"></i></label>

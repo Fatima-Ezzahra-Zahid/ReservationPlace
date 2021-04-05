@@ -77,7 +77,7 @@ public class AdminController {
         //send mail
         String email = useradminEntity.getEmail();
         String subject = "request to join in ResApp";
-        String message = "your request has been accepted";
+        String message = " your account is accepted";
 
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(email);
@@ -108,8 +108,8 @@ public class AdminController {
 
         //send mail
         String email = useradminEntity.getEmail();
-        String subject = "request to join in ResApp";
-        String message = "your request does not accept";
+        String subject = "Email to join in ResApp";
+        String message = "your account is not accepted";
 
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(email);
@@ -172,6 +172,8 @@ public class AdminController {
         ReservationEntity reservationEntity=new ReservationEntity(id,accpeted);
 
         resevationRepostory.Confirm(reservationEntity);
+
+
 
 
         return "redirect:/ShowRes";

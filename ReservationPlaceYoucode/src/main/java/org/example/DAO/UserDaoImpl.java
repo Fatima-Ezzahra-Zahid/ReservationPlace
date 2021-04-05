@@ -3,6 +3,8 @@ package org.example.DAO;
 import org.example.util.HibernateUtil;
 import org.example.Entity.UseradminEntity;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -12,10 +14,16 @@ import java.util.List;
 @Component("userDao")
 public class UserDaoImpl implements UserDAO{
     Session session;
+
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public void addUser(UseradminEntity user) {
         session = HibernateUtil.getSession();
         session.beginTransaction();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         session.save(user);
         session.getTransaction().commit();
         System.out.println("add user");
@@ -65,7 +73,7 @@ public class UserDaoImpl implements UserDAO{
             userEntity.setFirstName(user.getFirstName());
             userEntity.setLastName(user.getLastName());
             userEntity.setEmail(user.getEmail());
-            userEntity.setPassword(user.getPassword());
+            userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
 //            userEntity.setPhone(user.getPhone());
 //            userEntity.setRole(user.getRole());
             System.out.println("User update");
