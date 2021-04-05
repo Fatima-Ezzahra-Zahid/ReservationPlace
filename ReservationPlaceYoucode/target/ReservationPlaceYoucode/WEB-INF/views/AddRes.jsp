@@ -260,7 +260,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2" for="date">Date</label>
                                                 <div class="col-sm-10">
-                                                <form:input path="dateRes" type="date" onload="getDate()" class="form-control" id="date" name="date"/>
+                                                <form:input path="dateRes" min="${datee}" type="date" onload="getDate()" class="form-control" id="date" name="date"/>
                                                 </div>
                                             </div>
 

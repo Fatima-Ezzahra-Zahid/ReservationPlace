@@ -1,6 +1,8 @@
 package org.example.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -102,6 +104,9 @@ private TypeResService typeResService;
 	{
 		List<TypereservationEntity> typeList = typeResService.getAllTypeRes();
 		model.addAttribute("list", typeList);
+
+		LocalDate localDate = LocalDate.now();
+		model.addAttribute("datee",localDate);
 		return "AddRes";
 	}
 
