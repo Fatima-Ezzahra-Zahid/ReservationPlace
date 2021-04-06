@@ -110,10 +110,7 @@
                     </ul>
                     <ul class="nav-right">
                         <li class="header-notification"  style="margin-top: 1.5em;" >
-                            <a href="#!" class="waves-effect waves-light">
-                                <i class="ti-bell"></i>
-                                <span class="badge bg-c-red"></span>
-                            </a>
+
                             <ul class="show-notification">
                                 <li>
                                     <h6>Notifications</h6>
@@ -129,11 +126,6 @@
                                 <li class="waves-effect waves-light">
                                     <a href="EditPfS">
                                         <i class="ti-user"></i> Editer profile
-                                    </a>
-                                </li>
-                                <li class="waves-effect waves-light">
-                                    <a href="email-inbox.html">
-                                        <i class="ti-email"></i> My Messages
                                     </a>
                                 </li>
                                 <li class="waves-effect waves-light">
@@ -303,7 +295,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2">Password </label>
                                             <div class="col-sm-10">
-                                                <input path="password"  name="password" type="text"  class="form-control" value="<c:out value='${user.password}' />"/>
+                                                <input  name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  class="form-control" value="<c:out value='${user.password}' />"/>
                                             </div>
                                         </div>
                                         <div class="line"></div><br>

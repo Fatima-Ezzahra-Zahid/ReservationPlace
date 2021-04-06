@@ -113,10 +113,7 @@
                     </ul>
                     <ul class="nav-right">
                         <li class="header-notification"  style="margin-top: 1.5em;" >
-                            <a href="#!" class="waves-effect waves-light">
-                                <i class="ti-bell"></i>
-                                <span class="badge bg-c-red"></span>
-                            </a>
+
                             <ul class="show-notification">
                                 <li>
                                     <h6>Notifications</h6>
@@ -132,11 +129,6 @@
                                 <li class="waves-effect waves-light">
                                     <a href="EditPfAdmin">
                                         <i class="ti-user"></i> Editer profile
-                                    </a>
-                                </li>
-                                <li class="waves-effect waves-light">
-                                    <a href="email-inbox.html">
-                                        <i class="ti-email"></i> My Messages
                                     </a>
                                 </li>
                                 <li class="waves-effect waves-light">

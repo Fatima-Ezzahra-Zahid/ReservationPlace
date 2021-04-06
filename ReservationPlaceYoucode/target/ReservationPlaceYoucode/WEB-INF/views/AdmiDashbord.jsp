@@ -113,10 +113,7 @@
                     </ul>
                     <ul class="nav-right">
                         <li class="header-notification"  style="margin-top: 1.5em;" >
-                            <a href="#!" class="waves-effect waves-light">
-                                <i class="ti-bell"></i>
-                                <span class="badge bg-c-red"></span>
-                            </a>
+
                             <ul class="show-notification">
                                 <li>
                                     <h6>Notifications</h6>
@@ -132,11 +129,6 @@
                                 <li class="waves-effect waves-light">
                                     <a href="EditPfAdmin">
                                         <i class="ti-user"></i> Editer profile
-                                    </a>
-                                </li>
-                                <li class="waves-effect waves-light">
-                                    <a href="email-inbox.html">
-                                        <i class="ti-email"></i> My Messages
                                     </a>
                                 </li>
                                 <li class="waves-effect waves-light">
@@ -210,7 +202,7 @@
                             <a href="TypeRes" class="waves-effect waves-dark">
                                 <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                 <span class="pcoded-mtext" data-i18n="nav.form-components.main">
-                                           Type of reservation</span>
+                                          Type of Reservation</span>
                                 <span class="pcoded-mcaret"></span>
                             </a>
                         </li>
@@ -249,7 +241,7 @@
                     <div class="main-body">
                         <div class="card">
                             <div class="card-header">
-                                <h5>type of reservation</h5>
+                                <h5>accounts</h5>
 
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">

@@ -218,7 +218,6 @@ public class AdminController {
         String LName=req.getParameter("lastName");
         String email=req.getParameter("email");
         String password=req.getParameter("password");
-
         UseradminEntity useradminEntity=new UseradminEntity(id,FName,LName,email,password);
 
         userService.updateUser(useradminEntity);
