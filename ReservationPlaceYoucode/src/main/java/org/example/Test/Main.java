@@ -131,5 +131,11 @@ public static void main(final String[] args) throws Exception {
 //        TypeResRepository typeResRepository = new TypeResRepository();
 //        TypereservationEntity typereservationEntity = typeResRepository.getTypeResbyName("09:00--->17:00");
 //        System.out.println(typereservationEntity.getNomberClass());
+
+
+
+    RoleDaoImpl role = new RoleDaoImpl();
+    RoleEntity rl = role.getRoleById(2);
+    System.out.println(rl.getRoleName());
 }
 }
